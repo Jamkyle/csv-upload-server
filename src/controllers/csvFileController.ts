@@ -42,6 +42,15 @@ export const csvFileController = async (req: Request, res: Response): Promise<vo
                 new Promise((resolve) => femalesWriteStream.on('finish', resolve))
             ]);
 
+            try {
+                if (fs.statSync(malesFilePath).size === 0 || fs.statSync(femalesFilePath).size === 0) {
+                    return res.status(500).json({ error: 'CSV files are empty.' });
+                }
+            } catch (error) {
+                console.error('Error checking file:', error);
+                return res.status(500).json({ error: 'Failed to check file sizes.' });
+            }
+
             await zipFiles(malesFilePath, femalesFilePath, res);
         })
         .on('error', (err) => {
