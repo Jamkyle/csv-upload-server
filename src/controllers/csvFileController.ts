@@ -51,14 +51,18 @@ export const csvFileController = async (req: Request, res: Response): Promise<vo
                 return res.status(500).json({ error: 'Failed to check file sizes.' });
             }
 
-            await zipFiles(malesFilePath, femalesFilePath, res);
+            try {
+                await zipFiles(malesFilePath, femalesFilePath, res);
+            } catch (error) {
+                console.error('Error during zipping:', error);
+                res.status(500).json({ error: 'Failed to create ZIP file.' });
+                return;
+            }
+            cleanupFiles([malesFilePath, femalesFilePath])
+
         })
         .on('error', (err) => {
             console.error('Stream error:', err);
             res.status(500).json({ error: 'Failed to process file' });
         })
-        .on('close', () => {
-            // Cleanup temporary files
-            cleanupFiles([malesFilePath, femalesFilePath]);
-        });
 };
