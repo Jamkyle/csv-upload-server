@@ -91,3 +91,23 @@ You can use tools like [Postman](https://www.postman.com/) or [Insomnia](https:/
 ### Conclusion
 
 By following these steps, you should have your server set up and running with the necessary environment configuration. For further assistance, please refer to the documentation or raise an issue in the repository.
+
+
+# API Documentation
+
+## Key API Endpoint
+
+### POST /api/upload
+
+This endpoint allows you to upload a CSV file for processing. Upon successful upload, the server processes the file, sorts the data by gender, and returns a zipped file containing the processed CSV files.
+
+#### Request
+
+- **Endpoint**: `/api/upload`
+- **Method**: `POST`
+- **Content-Type**: `multipart/form-data`
+
+#### Request Body
+
+- **Field Name**: `csvfile`
+- **File**: A CSV file containing the following structure:
