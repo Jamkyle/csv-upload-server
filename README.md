@@ -59,8 +59,13 @@ Create a `.env.local` file in the root of your project. This file will store you
 
 ```env
 # .env.local
-PORT=3000
+PORT=5000
 ALLOWED_ORIGINS=http://localhost:5178,http://other.com
+```
+
+or
+```
+echo -e "PORT=5000\nALLOWED_ORIGINS=http://localhost:5178,http://other.com" > .env
 ```
 
 **Note:** Be sure to add `.env.local` to your `.gitignore` file to prevent sensitive information from being pushed to version control.
