@@ -70,6 +70,7 @@ ALLOWED_ORIGINS=http://localhost:5178,http://other.com
 To start the server in development mode, you can use `ts-node-dev` for automatic reloading:
 
 ```bash
+npm run build
 npm run dev
 ```
 
