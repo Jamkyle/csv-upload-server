@@ -79,7 +79,7 @@ This command will compile the TypeScript files and start the server on the speci
 
 The key API endpoint available:
 
-- **POST /upload**: Upload a CSV file for processing.
+- **POST api/upload**: Upload a CSV file for processing.
   - Request Body: Form-data containing the file.
   - Response: A zipped file containing the processed CSV files.
 
